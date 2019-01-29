@@ -1,0 +1,13 @@
+{
+  "name": "foopets.social",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "David Cedres <david.cedresx@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"cd backend && nodemon src/server\" \"cd frontend && yarn start\""
+  },
+  "dependencies": {
+    "concurrently": "^4.1.0"
+  }
+}
