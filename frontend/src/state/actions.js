@@ -18,6 +18,14 @@ export const loginSuccess = (username, token) => {
 	}
 }
 
+export const LOGIN_ERROR = 'LOGIN_ERROR'
+export const loginError = (error) => {
+	return {
+		type: LOGIN_ERROR,
+		msg: error
+	}
+}
+
 export const SIGNUP_REQUEST = 'SIGNUP_REQUEST'
 export const signupRequest = (name, username, password) => {
 	return {
@@ -44,7 +52,7 @@ export const login = (username, password) => dispatch => {
 		const { username, token } = res.data
 		dispatch(loginSuccess(username, token))
 	}).catch(err => {
-		console.log(err)
+		dispatch(loginError(err.response.data.msg))
 	})
 }
 
@@ -55,6 +63,6 @@ export const signup = (name, username, password) => dispatch => {
 		const { username, token } = res.data
 		dispatch(loginSuccess(username, token))
 	}).catch(err => {
-		console.log(err)
+		console.log('error on signup')
 	})
 }

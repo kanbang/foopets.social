@@ -7,7 +7,9 @@ import {
 	Layer,
 } from 'grommet'
 
-export default ({ onClose, onSubmit }) => {
+import Error from './error'
+
+export default ({ onClose, onSubmit, error }) => {
 
 	return (
 		<Layer 
@@ -19,6 +21,7 @@ export default ({ onClose, onSubmit }) => {
 				<Form onSubmit={onSubmit}>
 					<FormField label='username' name='username' required />
 					<FormField label='password' name='password' type='password' required />
+					{ error && <Error msg={error} /> }
 					<Button label='Log in' primary color='accent-1' type='submit' />
 				</Form>
 			</Box>

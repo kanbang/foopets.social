@@ -5,7 +5,7 @@ import LoginForm from '../components/login-form'
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		
+		error: state.user.error
 	}
 }
 
