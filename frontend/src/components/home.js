@@ -5,9 +5,11 @@ import {
 	Heading
 } from 'grommet'
 
+import FoopetList from './foopet-list'
 
-export default ({ username }) => (
-	<Box pad='medium' margin='small'>
-		<Heading>Hi {username}!</Heading>
+export default ({ foopets }) => (
+	<Box pad='medium'>
+		<Heading margin='small'>Hello!</Heading>
+		<FoopetList foopets={foopets} />
 	</Box>
 )

@@ -3,7 +3,7 @@ import Home from '../components/home'
 
 const mapStateToProps = (state, ownProps) => {
 	return {
-		username: state.user.username
+		foopets: state.foopets
 	}
 }
 

@@ -5,7 +5,15 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_ERROR,
 	SIGNUP_REQUEST,
-	SIGNOUT
+	SIGNUP_SUCCESS,
+	SIGNUP_ERROR,
+	LOGOUT,
+	FETCH_FOOPETS_REQUEST,
+	FETCH_FOOPETS_SUCCESS,
+	FETCH_FOOPETS_ERROR,
+	CREATE_FOOPET_REQUEST,
+	CREATE_FOOPET_SUCCESS,
+	CREATE_FOOPET_ERROR
 } from './actions'
 
 
@@ -17,15 +25,23 @@ const user = (state = {}, action) => {
 			return {}
 
 		case LOGIN_SUCCESS:
-			return { username: action.username, token: action.token }
+			localStorage.setItem('jwt', action.token)
+			return { username: action.username }
 
 		case LOGIN_ERROR:
 			return { error: action.msg }
 
 		case SIGNUP_REQUEST:
+			return {}
+
+		case SIGNUP_SUCCESS:
 			return { username: action.username }
+
+		case SIGNUP_ERROR:
+			return {}
 			
-		case SIGNOUT:
+		case LOGOUT:
+			localStorage.clear()
 			return {}
 
 		default:
@@ -34,6 +50,41 @@ const user = (state = {}, action) => {
 
 }
 
+const foopets = (state = [], action) => {
+
+	switch (action.type) {
+
+		case FETCH_FOOPETS_REQUEST:
+			return state
+		
+		case FETCH_FOOPETS_SUCCESS:
+			return [
+				...state,
+				...action.foopets
+			]
+
+		case FETCH_FOOPETS_ERROR:
+			return state
+		
+		case CREATE_FOOPET_REQUEST:
+			return state
+
+		case CREATE_FOOPET_SUCCESS:
+			return [
+				...state,
+				...action.foopet
+			]
+
+		case CREATE_FOOPET_ERROR:
+			return state
+
+		default:
+			return state
+	}
+
+}
+
 export default combineReducers({
-	user
+	user,
+	foopets
 })

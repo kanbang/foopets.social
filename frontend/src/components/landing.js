@@ -33,11 +33,15 @@ export default class extends Component {
 
 		return (
 			<Box align='center' gap='small'>
-				<Heading>Welcome to foopets</Heading>
-				<img src={monster} alt='monster' />
+				<Heading color='dark-1'>Welcome to foopets</Heading>
 				
-				<Button label='Log in' color='accent-1' onClick={this.showLoginForm} />
-				<Button label='Sign up' color='accent-2' onClick={this.showSignupForm} />
+				<img src={monster} alt='monster' style={{ marginBottom: 20 }}/>
+				
+				<Button label={<strong>Log in</strong>} 
+					color='accent-1' onClick={this.showLoginForm} />
+					
+				<Button label={<strong>Sign up</strong>} 
+					color='accent-2' onClick={this.showSignupForm} />
 
 				{this.state.doing === 'loging-in' && <LoginForm onClose={this.watch} />}
 				{this.state.doing === 'signing-up' && <SignupForm onClose={this.watch} />}

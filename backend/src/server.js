@@ -6,6 +6,7 @@ const jwt = require('express-jwt')
 
 // routers
 const authRouter = require('./routers/auth')
+const foopetsRouter = require('./routers/foopets')
 
 const api = express()
 
@@ -13,8 +14,10 @@ const api = express()
 api.use(bodyParser.urlencoded({ extended: true }))
 api.use(bodyParser.json())
 
+
 api.use(jwt({ secret: 'secret' }).unless({
 	path: [
+		'test',
 		'/auth/login',
 		'/auth/signup'
 	]
@@ -29,12 +32,15 @@ api.use((err, req, res, next) => {
 	}
 })
 
+api.use('/test', (res,req) => {
+	res.status(200).json({
+		msg: 'greetings'
+	})
+})
+
 // register routers
 api.use('/auth', authRouter)
-
-api.get('/protected', (req, res) => {
-	res.send('greetings!')
-})
+api.use('/foopets', foopetsRouter)
 
 // ready, set, go!
 api.listen(3001)

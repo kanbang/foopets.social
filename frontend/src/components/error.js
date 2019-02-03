@@ -6,11 +6,8 @@ import {
 
 export default ({ msg }) => (
 	<Box
-		alignSelf='left'
-		background='status-warning'
 		margin='small'
-		pad='small'
 	>
-		<Text color='white'>{msg}</Text>
+		<Text color='status-error'>{msg}</Text>
 	</Box>
 )
